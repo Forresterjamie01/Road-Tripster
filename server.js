@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(routes);
 
 app.get('/', function (req, res) {
-    res.render('home');
+    res.render('login');
 });
 
 app.listen(3000, () => {
