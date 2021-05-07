@@ -1,5 +1,5 @@
 const User = require('./User');
-const Triplog = require('./TripLog');
+const Triplog = require('./Triplog');
 
 User.hasMany(Triplog, {
   foreignKey: 'user_id',
@@ -11,3 +11,4 @@ Triplog.belongsTo(User, {
 });
 
 module.exports = { User, Triplog };
+ddddd
