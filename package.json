@@ -1,1 +1,19 @@
-{}
+{
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "road-tripster",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forresterjamie01/Road-Tripster.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Forresterjamie01/Road-Tripster/issues"
+  },
+  "homepage": "https://github.com/Forresterjamie01/Road-Tripster#readme"
+}
