@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Triplog, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    const projectData = await Project.findAll({ // get all projects and join with JSON
+    const TriplogData = await Triplog.findAll({ // get all projects and join with JSON
       include: [
         {
           model: User,
@@ -13,10 +13,10 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    const projects = projectData.map((project) => project.get({ plain: true }));
+    const Triplogs = TriplogData.map((Triplog) => Triplog.get({ plain: true }));
 
     res.render('homepage', { 
-      projects, 
+      Triplogs, 
       logged_in: req.session.logged_in 
     });
   } catch (err) {
@@ -24,9 +24,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/project/:id', async (req, res) => {
+router.get('/Triplog/:id', async (req, res) => {
   try {
-    const projectData = await Project.findByPk(req.params.id, {
+    const TriplogData = await Triplog.findByPk(req.params.id, {
       include: [
         {
           model: User,
@@ -35,10 +35,10 @@ router.get('/project/:id', async (req, res) => {
       ],
     });
 
-    const project = projectData.get({ plain: true });
+    const Triplog = TriplogData.get({ plain: true });
 
-    res.render('project', {
-      ...project,
+    res.render('Triplog', {
+      ...Triplog,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -46,11 +46,12 @@ router.get('/project/:id', async (req, res) => {
   }
 });
 
+
 router.get('/profile', withAuth, async (req, res) => { // Use withAuth middleware to prevent access to route
   try {
     const userData = await User.findByPk(req.session.user_id, { // Find the logged in user based on the session ID
       attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+      include: [{ model: Triplog }],
     });
 
     const user = userData.get({ plain: true });
