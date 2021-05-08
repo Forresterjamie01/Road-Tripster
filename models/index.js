@@ -11,4 +11,3 @@ Triplog.belongsTo(User, {
 });
 
 module.exports = { User, Triplog };
-jj
