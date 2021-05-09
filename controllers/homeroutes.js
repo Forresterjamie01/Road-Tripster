@@ -3,6 +3,7 @@ const { Triplog, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
+  console.log("Get home route")
   try {
     const TriplogData = await Triplog.findAll({ // get all projects and join with JSON
       include: [
@@ -15,9 +16,9 @@ router.get('/', async (req, res) => {
 
     const Triplogs = TriplogData.map((Triplog) => Triplog.get({ plain: true }));
 
-    res.render('homepage', { 
-      Triplogs, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      Triplogs,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);

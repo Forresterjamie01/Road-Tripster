@@ -46,4 +46,3 @@ Triplog.init(
 );
 
 module.exports = Triplog;
-jj
