@@ -15,11 +15,13 @@ router.get('/', async (req, res) => {
     });
 
     const Triplogs = TriplogData.map((Triplog) => Triplog.get({ plain: true }));
-
-    res.render('homepage', {
-      Triplogs,
-      logged_in: req.session.logged_in
-    });
+    console.log("Triplogs",Triplogs)
+    res.render('login'
+    //,{
+      //Triplogs,
+      //logged_in: req.session.logged_in
+    //}
+    );
   } catch (err) {
     res.status(500).json(err);
   }
@@ -67,12 +69,23 @@ router.get('/profile', withAuth, async (req, res) => { // Use withAuth middlewar
 });
 
 router.get('/login', (req, res) => { // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/profile');
-    return;
-  }
+  //if (req.session.logged_in) {
+    //res.redirect('/profile');
+    //return;
+  //}
 
   res.render('login');
 });
+
+router.get('/search', (req, res) => { // If the user is already logged in, redirect the request to another route
+ 
+    res.render('destination');
+})
+
+router.get('/getprofile', (req, res) => { // If the user is already logged in, redirect the request to another route
+ 
+  res.render('profile');
+})
+
 
 module.exports = router;
