@@ -92,5 +92,13 @@ router.get('/getprofile', (req, res) => { // If the user is already logged in, r
   res.render('profile');
 })
 
+router.get('/signup', (req, res) => { // If the user is already logged in, redirect the request to another route
+ 
+  res.render('signup');
+})
 
+router.get('/views/login.handlebars', (req, res) => { // If the user is already logged in, redirect the request to another route
+ 
+  res.render('login');
+})
 module.exports = router;
