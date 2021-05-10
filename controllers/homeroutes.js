@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   console.log("Get home route")
   try {
-    const TriplogData = await Triplog.findAll({ // get all projects and join with JSON
+    const TriplogData = await Triplog.findAll({ 
       include: [
         {
           model: User,
@@ -80,6 +80,11 @@ router.get('/login', (req, res) => { // If the user is already logged in, redire
 router.get('/search', (req, res) => { // If the user is already logged in, redirect the request to another route
  
     res.render('destination');
+})
+
+router.get('/getprofile', (req, res) => { // If the user is already logged in, redirect the request to another route
+ 
+  res.render('profile');
 })
 
 router.get('/getprofile', (req, res) => { // If the user is already logged in, redirect the request to another route
