@@ -1,21 +1,33 @@
-<form>
-  <div class="mb-3">
-    <label for="FromCity" class="form-label">From City</label>
-    <input type="text" class="form-control" id="From City" aria-describedby="emailHelp">
-  </div>
-  <div class="mb-3">
-    <label for="ToCity" class="form-label">To</label>
-    <input type="text" class="form-control" id="To City">
-  </div>
-  <button type="submit" class="btn btn-primary" id="Submit">Go</button>
-</form>
 
-  <h3>Your Trip Directions</h3>
+
+   <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+  <div class="card-header">Your Destination</div>
+  <div class="card-body">
+    <h5 class="card-title">Where do you want to go?</h5>
+<div id="email" class="form-group" data-step="1"> 
+      <label>From:</label>
+      <input id="from-input" class="form-control" type="frominput">
+    </div>
+<div id="password" class="form-group final" data-step="2"> 
+      <label for="to-input">To:</label>
+      <input id="to-input" class="form-control" type="toinput">
+    </div>
+  <p id="error message"></p>
+
+  <button class="btn btn-primary" href="" id="Save-button" >Save</button>
+
+  <div id="back-button">&#8592;</div>
+
+</div>
+   </div>
+   <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+  <div class="card-header">Your Destination:</div></div>
+
     <div id="googleMap"></div>
   
 
     <div id="output"></div>
 
-  </body>
+ 
 
 <script src="/js/getapi.js"></script>
