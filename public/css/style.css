@@ -16,15 +16,8 @@ body {
     -o-background-size:cover;
 }
 
-.form-container{
-    width: 500px;
-    position: absolute;
-    top: calc(50% -250px);
-    left: calc(50% - 250px);
-    background-color: transparent;
-    padding:50px;
-    box-shadow: 2px 2px 5px black;
-    border-radius: 10px;
-    color: white;
-}
 
+
+.info-section {
+    font-size: small;
+}
