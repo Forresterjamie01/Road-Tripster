@@ -21,3 +21,8 @@ body {
 .info-section {
     font-size: small;
 }
+
+#map-canvas {
+    height: 100%;
+    width: 100%;
+}
