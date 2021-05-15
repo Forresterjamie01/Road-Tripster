@@ -5,7 +5,7 @@ const express = require('express');
 //const htmlRoutes = require('./routes/htmlRoutes');
 const exphbs = require("express-handlebars");
 const sequelize = require("./config/connection")
-const routes = require("./controllers/index.js")
+//const routes = require("./controllers/index.js")
 const helpers = require('./utils/helpers'); 
 
 
@@ -28,7 +28,6 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-app.use(routes)
 //app.use('/api', apiRoutes);
 //app.use('/', htmlRoutes);
 
@@ -42,9 +41,12 @@ app.set('view engine', 'handlebars');
 //});
 
 
-app.use(routes);
+//app.use(routes);
 
-sequelize.sync({ force: false }).then(() => {
+app.use(require("./controllers/homeroutes"));
+app.use(require("./controllers/apiroutes"));
+
+sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log('Now listening '));
 
 });
