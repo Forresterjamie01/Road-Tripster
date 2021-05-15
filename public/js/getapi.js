@@ -73,15 +73,15 @@ function initMap() {
       zoom: 14,
       center: haight
     }
-    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
     directionsRenderer.setMap(map);
   }
   
   function calcRoute() {
     var selectedMode = document.getElementById('mode').value;
     var request = {
-        origin: haight,
-        destination: oceanBeach,
+        origin: haight, // $("#id").val
+        destination: oceanBeach, //
         // Note that JavaScript allows us to access the constant
         // using square brackets and a string value as its
         // "property."
