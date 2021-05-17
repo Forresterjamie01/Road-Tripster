@@ -64,32 +64,43 @@
 // }
 
 
+
+
+
 function initMap() {
-    var directionsService = new google.maps.DirectionsService();
-    var directionsRenderer = new google.maps.DirectionsRenderer();
-    var haight = new google.maps.LatLng( 37.871666, -122.272781);
-    var oceanBeach = new google.maps.LatLng( 37.871666, -122.272781);
-    var mapOptions = {
-      zoom: 14,
-      center: haight
-    }
-    var map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+    const map = new google.maps.Map(document.getElementById("googleMap"), {
+      zoom: 7,
+      center: { lat: 41.85, lng: -87.65 },
+    });
     directionsRenderer.setMap(map);
+  
+    const onChangeHandler = function () {
+      calculateAndDisplayRoute(directionsService, directionsRenderer);
+    };
+    document.getElementById("start").addEventListener("change", onChangeHandler);
+    document.getElementById("end").addEventListener("change", onChangeHandler);
   }
   
-  function calcRoute() {
-    var selectedMode = document.getElementById('mode').value;
-    var request = {
-        origin: haight, // $("#id").val
-        destination: oceanBeach, //
-        // Note that JavaScript allows us to access the constant
-        // using square brackets and a string value as its
-        // "property."
-        travelMode: google.maps.TravelMode[selectedMode]
-    };
-    directionsService.route(request, function(response, status) {
-      if (status == 'OK') {
-        directionsRenderer.setDirections(response);
+  function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+    directionsService.route(
+      {
+        origin: {
+          query: document.getElementById("start").value,
+        },
+        destination: {
+          query: document.getElementById("end").value,
+        },
+        travelMode: google.maps.TravelMode.DRIVING,
+      },
+      (response, status) => {
+        if (status === "OK") {
+          directionsRenderer.setDirections(response);
+        } else {
+          window.alert("Directions request failed due to " + status);
+        }
       }
-    });
+    );
   }
+  
